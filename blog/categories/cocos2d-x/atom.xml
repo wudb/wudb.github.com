@@ -1,100 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>iTeaCoder</title>
-  <meta name="author" content="啸寒">
-
-  
-  <meta name="description" content="在文章cocos2d-x中处理touch事件中简单讨论过怎样处理touch事件, 那么今天来深入了解下cocos2d-x中是怎样分发touch事件的。 我们最先来看到CCTouchDispatcher这个类, 这个类在cocos2d-x中是管理和分发touch事件, &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://wudb.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="iTeaCoder" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<!-- <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">iTeaCoder</a></h1>
-  
-    <h2>业精于勤荒于嬉 行成于思毁于随</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:wudb.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Category: Cocos2d-x | iTeaCoder]]></title>
+  <link href="http://wudb.github.io/blog/categories/cocos2d-x/atom.xml" rel="self"/>
+  <link href="http://wudb.github.io/"/>
+  <updated>2013-08-27T12:16:57+08:00</updated>
+  <id>http://wudb.github.io/</id>
+  <author>
+    <name><![CDATA[啸寒]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian/">深入cocos2d-x中的touch事件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-08-27T12:11:00+08:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在文章<a href="http://www.cnblogs.com/xiaohan-wu/p/3187994.html" title="cocos2d-x中处理touch事件">cocos2d-x中处理touch事件</a>中简单讨论过怎样处理touch事件, 那么今天来深入了解下cocos2d-x中是怎样分发touch事件的。</p>
+  <entry>
+    <title type="html"><![CDATA[深入cocos2d-x中的touch事件]]></title>
+    <link href="http://wudb.github.io/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian/"/>
+    <updated>2013-08-27T12:11:00+08:00</updated>
+    <id>http://wudb.github.io/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian</id>
+    <content type="html"><![CDATA[<p>在文章<a href="http://www.cnblogs.com/xiaohan-wu/p/3187994.html" title="cocos2d-x中处理touch事件">cocos2d-x中处理touch事件</a>中简单讨论过怎样处理touch事件, 那么今天来深入了解下cocos2d-x中是怎样分发touch事件的。</p>
 
 <p>我们最先来看到CCTouchDispatcher这个类, 这个类在cocos2d-x中是管理和分发touch事件,  这个类继承于EGLTouchDelegate:</p>
 
@@ -220,87 +144,7 @@ pArray-&gt;insertObject(pHandler, u);
 <p>这个方法主要是按照delegate的优先级来添加delegate, 所以代码中就表明了优先级数字越小, 优先级就越高, 但是这只是针对同种类型的touch事件。</p>
 
 <p>这个类的其他方法, 比如移除delegate等等就不在这里赘述了, 好了, 这篇就到这里了。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian/">深入cocos2d-x中的touch事件</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/wudb">@wudb</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'wudb',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - 啸寒 -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</feed>
