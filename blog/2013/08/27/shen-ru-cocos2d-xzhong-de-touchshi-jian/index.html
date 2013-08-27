@@ -38,7 +38,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">iTeaCoder</a></h1>
   
-    <h2>业精于勤荒于嬉 行成于思毁于随</h2>
+    <h2>业精于勤荒于嬉	行成于思毁于随</h2>
   
 </hgroup>
 
@@ -254,6 +254,11 @@ pArray-&gt;insertObject(pHandler, u);
     
       <div class="sharing">
   
+
+
+<a href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=250,height=200');})()" title="分享到新浪微博"><img src="/images/sina_weibo_share.gif"></a>
+
+
   
   
 </div>
@@ -266,12 +271,25 @@ pArray-&gt;insertObject(pHandler, u);
   </footer>
 </article>
 <!--  -->
-｛% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %｝
+
   <section>
     <h1>评论</h1>
-    <div id="comments" aria-live="polite">｛% include post/duoshuo.html %｝</div>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wudb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+<!-- Duoshuo Comment END --></div>
   </section>
-｛% endif %｝
+
 </div>
 
 <aside class="sidebar">
