@@ -4,7 +4,7 @@
 
 url: http://wudb.github.io
 title: iTeaCoder
-subtitle: 业精于勤荒于嬉 行成于思毁于随
+subtitle: 业精于勤荒于嬉	行成于思毁于随
 author: 啸寒
 simple_search: http://google.com/search
 description:
@@ -72,6 +72,9 @@ github_skip_forks: true
 #twitter_user:
 #twitter_tweet_button: false
 
+#sina
+sina_weibo_button: true
+
 # Google +1
 google_plus_one: false
 google_plus_one_size: medium
@@ -96,7 +99,6 @@ disqus_show_comment_count: false
 # duoshuo comments
 duoshuo_comments: true
 duoshuo_short_name: wudb
-duoshuo_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
