@@ -96,6 +96,7 @@ disqus_show_comment_count: false
 # duoshuo comments
 duoshuo_comments: true
 duoshuo_short_name: wudb
+duoshuo_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:

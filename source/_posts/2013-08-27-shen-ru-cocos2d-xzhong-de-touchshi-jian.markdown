@@ -3,6 +3,7 @@ layout: post
 title: "深入cocos2d-x中的touch事件"
 date: 2013-08-27 12:11
 comments: true
+published: true
 categories: Cocos2d-x
 ---
 在文章[cocos2d-x中处理touch事件](http://www.cnblogs.com/xiaohan-wu/p/3187994.html "cocos2d-x中处理touch事件")中简单讨论过怎样处理touch事件, 那么今天来深入了解下cocos2d-x中是怎样分发touch事件的。
