@@ -3,6 +3,7 @@ layout: post
 title: "为octopress添加评论和分类"
 date: 2013-09-03 21:15
 comments: true
+published: true
 categories:Octopress 
 ---
 ####为octopress添加多说评论
