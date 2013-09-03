@@ -152,17 +152,13 @@ Liquid::Template.register_tag('category_list', Jekyll::CategoryListTag)
 <p>这个插件会向liquid注册一个名为category_list的tag，该tag就是以li的形式将站点所有的category组织起来。如果要将category加入到侧边导航栏, 需要增加一个aside。</p>
 
 <p>2.增加aside
-复制以下代码到source/_includes/asides/category_list.html。</p>
+复制以下代码到source/_includes/asides/categoryList.html。</p>
 
 <pre><code>&lt;section&gt;
 &lt;h1&gt;分类&lt;/h1&gt;
 &lt;ul id="categories"&gt;
-&lt;li class='category'&gt;&lt;a href='/blog/categories/cocos2d-x/'&gt;Cocos2d-x (1)&lt;/a&gt;&lt;/li&gt;
-</code></pre>
-
-<p><li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li></p>
-
-<pre><code>&lt;/ul&gt;
+   \{\% category_list \%\} //此处去掉四个'\'
+&lt;/ul&gt;
 &lt;/section&gt;  
 </code></pre>
 
