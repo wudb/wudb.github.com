@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>iTeaCoder</title>
+  <title>为octopress添加评论和分类 - iTeaCoder</title>
   <meta name="author" content="啸寒">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="为octopress添加多说评论 在自己博客里面侧边栏页面里面加了最近评论，方法如下: 1.在source/_includes/asides创建一个comment.html(文件名随便起, 自己知道就行了) 2.在comment.html中添加下段代码 &lt;section&gt;
+&lt;h1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wudb.github.io">
+  <link rel="canonical" href="http://wudb.github.io/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="iTeaCoder" type="application/atom+xml">
@@ -64,52 +64,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/09/03/testpost/">Testpost</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-03T22:23:00+08:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
-        <!--  -->
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei/">为octopress添加评论和分类</a></h1>
+      <h1 class="entry-title">为octopress添加评论和分类</h1>
     
     
       <p class="meta">
@@ -133,7 +93,7 @@
   </header>
 
 
-  <div class="entry-content"><h4>为octopress添加多说评论</h4>
+<div class="entry-content"><h4>为octopress添加多说评论</h4>
 
 <p>在自己博客里面侧边栏页面里面加了最近评论，方法如下:  <br/>
 1.在source/_includes/asides创建一个comment.html(文件名随便起, 自己知道就行了) <br/>
@@ -211,22 +171,16 @@ Liquid::Template.register_tag('category_list', Jekyll::CategoryListTag)
 <p>参考: <a href="http://yrzhll.com/blog/2012/12/12/comment/">http://yrzhll.com/blog/2012/12/12/comment/</a>  <br/>
 <a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian/">深入cocos2d-x中的touch事件</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">啸寒</span></span>
+
+      
 
 
 
@@ -238,153 +192,62 @@ Liquid::Template.register_tag('category_list', Jekyll::CategoryListTag)
   
 
 
-<time datetime="2013-08-27T12:11:00+08:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
-        <!--  -->
-        
-      </p>
+<time datetime="2013-09-03T21:15:00+08:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
 
 
-  <div class="entry-content"><p>在文章<a href="http://www.cnblogs.com/xiaohan-wu/p/3187994.html" title="cocos2d-x中处理touch事件">cocos2d-x中处理touch事件</a>中简单讨论过怎样处理touch事件, 那么今天来深入了解下cocos2d-x中是怎样分发touch事件的。</p>
+<a href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=250,height=200');})()" title="分享到新浪微博"><img src="/images/sina_weibo_share.gif"></a>
 
-<p>我们最先来看到CCTouchDispatcher这个类, 这个类在cocos2d-x中是管理和分发touch事件,  这个类继承于EGLTouchDelegate:</p>
 
-<pre><code>class CC_DLL EGLTouchDelegate
-{
-public:
-    virtual void touchesBegan(CCSet* touches, CCEvent* pEvent) = 0;
-    virtual void touchesMoved(CCSet* touches, CCEvent* pEvent) = 0;
-    virtual void touchesEnded(CCSet* touches, CCEvent* pEvent) = 0;
-    virtual void touchesCancelled(CCSet* touches, CCEvent* pEvent) = 0;
-    virtual ~EGLTouchDelegate() {}
-};
-</code></pre>
-
-<p>那么这个类是触摸的开始, 当然这里指的只是cocos2d-x这个库的外层接口, 而不包括openGL的部分。</p>
-
-<p>在CCTouchDispatcher类中有两个方法: addStandardDelegate 和 addTargetedDelegate, 相信大家都用过的, 对, 这就添加多点和单点触摸的方法, 这个类里面定义了两个数组来管理这些添加进来的delegate, 然后当touch事件传到这个类时, 也就是会调用这个类的touchesBegan等这系列方法。而这四个方法都只是调用了下面这个方法:</p>
-
-<pre><code>void touches(CCSet *pTouches, CCEvent *pEvent, unsigned int uIndex);
-</code></pre>
-
-<p>而这个方法主要内容就是分发touch事件, 首先分发的是单点事件:</p>
-
-<pre><code>//判断是否有单点的handler
-if (uTargetedHandlersCount &gt; 0)
-{
-    CCTouch *pTouch;
-    CCSetIterator setIter;
-    for (setIter = pTouches-&gt;begin(); setIter != pTouches-&gt;end(); ++setIter)
-    {
-        pTouch = (CCTouch *)(*setIter);
-
-        CCTargetedTouchHandler *pHandler = NULL;
-        CCObject* pObj = NULL;
-        //遍历所有单点的handler, 开始分发不同的事件
-        CCARRAY_FOREACH(m_pTargetedHandlers, pObj)
-        {
-            pHandler = (CCTargetedTouchHandler *)(pObj);
-
-            if (! pHandler)
-            {
-               break;
-            }
-
-            bool bClaimed = false;
-            if (uIndex == CCTOUCHBEGAN) //touchBegan
-            {
-                //这里拿到的就是我们经常在ccTouchBegan里面是返回的true or false
-                bClaimed = pHandler-&gt;getDelegate()-&gt;ccTouchBegan(pTouch, pEvent);
-
-                if (bClaimed)//如果为true, 说明这个delegate要处理事情
-                {
-                    pHandler-&gt;getClaimedTouches()-&gt;addObject(pTouch);
-                }
-            } else
-             if (pHandler-&gt;getClaimedTouches()-&gt;containsObject(pTouch))
-            {
-                // moved ended canceled
-                bClaimed = true;
-
-                switch (sHelper.m_type)//分发事件的类型
-                {
-                case CCTOUCHMOVED:
-                    pHandler-&gt;getDelegate()-&gt;ccTouchMoved(pTouch, pEvent);
-                    break;
-                case CCTOUCHENDED:
-                    pHandler-&gt;getDelegate()-&gt;ccTouchEnded(pTouch, pEvent);
-                    pHandler-&gt;getClaimedTouches()-&gt;removeObject(pTouch);
-                    break;
-                case CCTOUCHCANCELLED:
-                    pHandler-&gt;getDelegate()-&gt;ccTouchCancelled(pTouch, pEvent);
-                    pHandler-&gt;getClaimedTouches()-&gt;removeObject(pTouch);
-                    break;
-                }
-            }
-                //如果你返回了true并且你的类swallow掉了touch事件, 那么下面的touch事件就不再继续了
-            if (bClaimed &amp;&amp; pHandler-&gt;isSwallowsTouches())
-            {
-                if (bNeedsMutableSet)
-                {
-                    pMutableTouches-&gt;removeObject(pTouch);
-                }
-
-                break;
-            }
-        }
-    }
-}
-</code></pre>
-
-<p>这就是单点的事件了, 所以不论你把类的优先级怎么设置, 单点事件都是在多点事件之前处理的。而多点事件基本类似, 这里就不再赘述了。</p>
-
-<p>然后我们再回到添加delegate的方法上, 来看看优先级的处理, addStandardDelegate 和 addTargetedDelegate都会调用下面这个添加方法:</p>
-
-<pre><code>void CCTouchDispatcher::forceAddHandler(CCTouchHandler *pHandler, CCArray *pArray)
-{
-unsigned int u = 0;
-
-CCObject* pObj = NULL;
-CCARRAY_FOREACH(pArray, pObj)
- {
-     CCTouchHandler *h = (CCTouchHandler *)pObj;
-     if (h)
-     {
-         //查找比自己优先级数字大的并在它的位置插入
-         if (h-&gt;getPriority() &lt; pHandler-&gt;getPriority())
-         {
-             ++u;
-         }
-
-         if (h-&gt;getDelegate() == pHandler-&gt;getDelegate())
-         {
-             CCAssert(0, "");
-             return;
-         }
-     }
- }
-
-pArray-&gt;insertObject(pHandler, u);
-}
-</code></pre>
-
-<p>这个方法主要是按照delegate的优先级来添加delegate, 所以代码中就表明了优先级数字越小, 优先级就越高, 但是这只是针对同种类型的touch事件。</p>
-
-<p>这个类的其他方法, 比如移除delegate等等就不在这里赘述了, 好了, 这篇就到这里了。</p>
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/27/shen-ru-cocos2d-xzhong-de-touchshi-jian/" title="Previous Post: 深入cocos2d-x中的touch事件">&laquo; 深入cocos2d-x中的touch事件</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/03/testpost/" title="Next Post: testpost">testpost &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+<!--  -->
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>评论</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wudb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -431,6 +294,7 @@ ds.charset = 'UTF-8';
 </section>
   
 </aside>
+
 
     </div>
   </div>

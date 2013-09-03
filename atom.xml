@@ -4,7 +4,7 @@
   <title><![CDATA[iTeaCoder]]></title>
   <link href="http://wudb.github.io/atom.xml" rel="self"/>
   <link href="http://wudb.github.io/"/>
-  <updated>2013-09-03T21:11:04+08:00</updated>
+  <updated>2013-09-03T22:24:40+08:00</updated>
   <id>http://wudb.github.io/</id>
   <author>
     <name><![CDATA[啸寒]]></name>
@@ -12,6 +12,100 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[testpost]]></title>
+    <link href="http://wudb.github.io/blog/2013/09/03/testpost/"/>
+    <updated>2013-09-03T22:23:00+08:00</updated>
+    <id>http://wudb.github.io/blog/2013/09/03/testpost</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[为octopress添加评论和分类]]></title>
+    <link href="http://wudb.github.io/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei/"/>
+    <updated>2013-09-03T21:15:00+08:00</updated>
+    <id>http://wudb.github.io/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei</id>
+    <content type="html"><![CDATA[<h4>为octopress添加多说评论</h4>
+
+<p>在自己博客里面侧边栏页面里面加了最近评论，方法如下:  <br/>
+1.在source/_includes/asides创建一个comment.html(文件名随便起, 自己知道就行了) <br/>
+2.在comment.html中添加下段代码</p>
+
+<pre><code>&lt;section&gt;
+&lt;h1&gt;最近评论&lt;/h1&gt;
+&lt;ul class="ds-recent-comments" data-num-items="10"&gt;
+&lt;/ul&gt;
+&lt;!--多说js加载开始，一个页面只需要加载一次 --&gt;
+&lt;script type="text/javascript"&gt;
+var duoshuoQuery = {short_name:"your_duoshuo_name"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';
+ds.async = true;ds.src = 'http://static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] ||    document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+&lt;/script&gt;
+&lt;!--多说js加载结束，一个页面只需要加载一次 --&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>3.打开_config.yml 将comment.html添加到</p>
+
+<pre><code>  page_asides: [asides/category_list.html, asides/comment.html, asides/github.html]
+</code></pre>
+
+<h4>为octopress添加分类</h4>
+
+<p>1.保存以下代码到plugins/category_list_tag.rb：</p>
+
+<pre><code>module Jekyll
+class CategoryListTag &lt; Liquid::Tag
+def render(context)
+  html = ""
+  categories = context.registers[:site].categories.keys
+  categories.sort.each do |category|
+    posts_in_category = context.registers[:site].categories[category].size
+    category_dir = context.registers[:site].config['category_dir']
+    category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
+    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://wudb.github.io/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
+  end
+  html
+end
+end
+end
+
+Liquid::Template.register_tag('category_list', Jekyll::CategoryListTag)
+</code></pre>
+
+<p>这个插件会向liquid注册一个名为category_list的tag，该tag就是以li的形式将站点所有的category组织起来。如果要将category加入到侧边导航栏, 需要增加一个aside。</p>
+
+<p>2.增加aside
+复制以下代码到source/_includes/asides/category_list.html。</p>
+
+<pre><code>&lt;section&gt;
+&lt;h1&gt;分类&lt;/h1&gt;
+&lt;ul id="categories"&gt;
+&lt;li class='category'&gt;&lt;a href='http://wudb.github.io/blog/categories/cocos2d-x/'&gt;Cocos2d-x (1)&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+
+<p><li class='category'><a href='http://wudb.github.io/blog/categories/octopress/'>Octopress (1)</a></li></p>
+
+<pre><code>&lt;/ul&gt;
+&lt;/section&gt;  
+</code></pre>
+
+<p>3.配置侧边栏需要修改_config.yml文件, 修改其default_asides项:</p>
+
+<pre><code>default_asides: [asides/category_list.html, asides/recent_posts.html]
+</code></pre>
+
+<p>参考: <a href="http://yrzhll.com/blog/2012/12/12/comment/">http://yrzhll.com/blog/2012/12/12/comment/</a>  <br/>
+<a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[深入cocos2d-x中的touch事件]]></title>
