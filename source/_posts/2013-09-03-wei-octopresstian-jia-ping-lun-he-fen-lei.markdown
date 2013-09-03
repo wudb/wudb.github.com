@@ -57,12 +57,12 @@ categories: Octopress
 这个插件会向liquid注册一个名为category_list的tag，该tag就是以li的形式将站点所有的category组织起来。如果要将category加入到侧边导航栏, 需要增加一个aside。
 
 2.增加aside
-复制以下代码到source/_includes/asides/category_list.html。
+复制以下代码到source/_includes/asides/categoryList.html。
 	
 	<section>
   	<h1>分类</h1>
   	<ul id="categories">
-    {% category_list %}
+       \{\% category_list \%\} //此处去掉四个'\'
   	</ul>
 	</section>  
 
