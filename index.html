@@ -9,8 +9,7 @@
   <meta name="author" content="啸寒">
 
   
-  <meta name="description" content="为文章增加分享功能, 我们可以找些插件来添加到博客里面, 我就选择了JiaThis, 大家也可以选择其他认为好的。 1.在_config.yml中添加如下配置: \#JiaThis
-jiathis: true 2.在source/_include/post/sharing. &hellip;">
+  <meta name="description" content="很早以前就知道github了, 就试过github page, 但是最终没有搭建成功这个博客, 开始辗转于csdn, 博客园等等网站写博客。前一段时间看见破船之家的一篇文章: 利用Octopress搭建一个Github博客, 遂又起意, 于是就照着这篇文章的步骤开始了。 此次, 博客搭建成功了, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,172 @@ jiathis: true 2.在source/_include/post/sharing. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/07/ji-lu-da-jian-octopress-plus-githubbo-ke-de-guo-cheng/">记录搭建octopress+github博客的过程</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-07T14:53:00+08:00" pubdate data-updated="true">Sep 7<span>th</span>, 2013</time>
+        <!--  -->
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>很早以前就知道github了, 就试过github page, 但是最终没有搭建成功这个博客, 开始辗转于csdn, 博客园等等网站写博客。前一段时间看见<a href="http://beyondvincent.com/">破船之家</a>的一篇文章: <a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">利用Octopress搭建一个Github博客</a>, 遂又起意, 于是就照着这篇文章的步骤开始了。</p>
+
+<p>此次, 博客搭建成功了, 于是写下搭建过程。下面所有的过程都是在mac os x上完成的。</p>
+
+<h4>1. 安装ruby</h4>
+
+<p>octopress是用ruby写的, 所以ruby的环境需要建立起来。  <br/>
+安装rvm(ruby version manager)</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby 
+</code></pre>
+
+<p>接下来用rvm来安装ruby, 建议ruby的版本是1.9.3以上</p>
+
+<pre><code>rvm install 1.9.3
+rvm use 1.9.3
+rvm rubygems latest  
+</code></pre>
+
+<p>安装完以后可以查看ruby的版本信息  <br/>
+<strong><em>参考: <a href="http://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/">How to Install Xcode, Homebrew, Git, RVM, Ruby &amp; Rails on Snow Leopard, Lion, and Mountain Lion</a></em></strong></p>
+
+<h4>2. 安装octopress</h4>
+
+<p>在安装octopress之前, 请确定你的电脑上安装有git, 在mac os x上是自带有git的, 所以不用安装。其他平台请参考<a href="https://help.github.com/articles/set-up-git">Set Up Git</a>。</p>
+
+<p>然后把octopress从github上拷贝下来, 并进入到octopress目录, 建议大家在使用github的时候还是翻墙吧, 如果不懂翻墙, 可以去<strong><em><a href="http://a.wy002.com/290763">51vpn</a></em></strong>注册一个账号,这个用起来比较简单, 有免费账号亦有收费的账号, 具体看自身情况。</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+cd octopress    # If you use RVM, You'll be asked if you trust  the .rvmrc file (say yes).
+</code></pre>
+
+<p>接下来安装相关依赖bundler</p>
+
+<pre><code>gem install bundler
+bundle install
+</code></pre>
+
+<p>最后安装默认主题</p>
+
+<pre><code>rake install
+</code></pre>
+
+<h4>3. 配置octopress</h4>
+
+<p>_config.yml是博客系统的配置文件, 在config.yml文件中有三大配置项：Main Configs、Jekyll &amp; Plugins和3rd Party Settings。</p>
+
+<ul>
+<li>Main Configs主要是配置url(你博客的地址), title(博客名称), subtitle(博客子标题), author(博客作者)</li>
+<li>Plugins配置边栏中的最近评论, 最近文章等等</li>
+<li>3rd Party Settings配置一些第三方插件, 比如分享, 统计, 评论等等</li>
+</ul>
+
+
+<p><strong><em>参考: <a href="http://octopress.org/docs/configuring/">octopress config</a></em></strong></p>
+
+<h4>4. 部署octopress</h4>
+
+<p>首先你需要到<a href="www.github.com">github</a>注册账号后, 创建一个仓库来存放octopress代码。
+创建好仓库后, 就可以开始部署了:</p>
+
+<pre><code>rake setup_github_pages
+</code></pre>
+
+<p>上面的命令会创建一个<em>deploy目录，目录用来存放部署到master分支的内容。期间会要求你输入仓库的url, 根据提示，进行输入即可。
+接下来生成博客文件, 并将博客文件拷贝到</em>deploy目录下, 并提交到master分支下。</p>
+
+<pre><code>rake generate
+rake deploy
+</code></pre>
+
+<p>此时你就可以访问你的博客<a href="http://yourname.github.io/">http://yourname.github.io/</a>了。如果你没有看见, 请等待几分钟。  <br/>
+最后我们把source单独提交到source分支下</p>
+
+<pre><code>git add .
+git commit -m 'initial source origin'
+git push origin source
+</code></pre>
+
+<h4>5. 开始写博客</h4>
+
+<p>octopress把所有博客文章都放在source/<em>post目录下, 当然不需要你去这个目录下创建文章, 你只要执行下面的命令, octopress就会帮你生成一篇文章在source/</em>post目录下</p>
+
+<pre><code>rake new_post["你的文章名称"]
+</code></pre>
+
+<p>octopress生成的文章的文件名称遵循这样一个命名规则: YYYY-MM-DD-post-title.markdown, 日期加上文章名称。注意生成的文件是markdown格式的, 所以在写博客之前你需要熟悉markdown, 你可以参考<strong><em><a href="http://wowubuntu.com/markdown/#list">Markdown语法说明</a></em></strong>。   <br/>
+文章的开始是octopress生成的一些信息</p>
+
+<pre><code>---
+layout: post
+title: "记录搭建octopress+github博客的过程"
+date: 2013-09-07 14:53
+comments: true
+categories: Octopress
+--- 
+</code></pre>
+
+<p>请注意冒号后面的空格, 这个空格必须存在, 不然生成的文章会有问题, 大家可以试试去掉空格。 <br/>
+接下来就是提交新文章</p>
+
+<pre><code>rake generate
+git add .
+git commit -m "add new post"
+git push origin source
+rake deploy
+</code></pre>
+
+<p>当然在提交前, 你可以先在本地预览下</p>
+
+<pre><code>rake generate
+rake preview
+</code></pre>
+
+<p>然后浏览器中打开<a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a>或<a href="http://localhost:4000/">http://localhost:4000/</a>就可以看见自己新提交的文章了。  <br/>
+如果未写好的文章也可以提交到github, 只要在文章头部加入下面的一段, 就不用担心会把文章发布出去。</p>
+
+<pre><code>published: false  //改成true就变成发布状态了
+</code></pre>
+
+<h4>6. 其他配置</h4>
+
+<p><a href="http://wudb.github.io/blog/2013/09/07/wei-octopresstian-jia-jiathis/">为octopress添加JiaThis</a>  <br/>
+<a href="http://wudb.github.io/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei/">为octopress添加评论和分类</a></p>
+
+<h4>7. 小结</h4>
+
+<p>本文介绍了利用octopress和github page来搭建一个博客系统。</p>
+
+<p><strong><em>参考: <a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">利用Octopress搭建一个Github博客</a></em></strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -394,12 +559,16 @@ pArray-&gt;insertObject(pHandler, u);
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/cocos2d-x/'>Cocos2d-x (1)</a></li>
-<li class='category'><a href='/blog/categories/octopress/'>Octopress (2)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (3)</a></li>
 
   </ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/07/ji-lu-da-jian-octopress-plus-githubbo-ke-de-guo-cheng/">记录搭建octopress+github博客的过程</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/09/07/wei-octopresstian-jia-jiathis/">为octopress添加JiaThis</a>
