@@ -9,8 +9,8 @@
   <meta name="author" content="啸寒">
 
   
-  <meta name="description" content="为octopress添加多说评论 在自己博客里面侧边栏页面里面加了最近评论，方法如下: 1.在source/_includes/asides创建一个comment.html(文件名随便起, 自己知道就行了) 2.在comment.html中添加下段代码 &lt;section&gt;
-&lt;h1 &hellip;">
+  <meta name="description" content="为文章增加分享功能, 我们可以找些插件来添加到博客里面, 我就选择了JiaThis, 大家也可以选择其他认为好的。 1.在_config.yml中添加如下配置: \#JiaThis
+jiathis: true 2.在source/_include/post/sharing. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/07/wei-octopresstian-jia-jiathis/">为octopress添加JiaThis</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-07T14:39:00+08:00" pubdate data-updated="true">Sep 7<span>th</span>, 2013</time>
+        <!--  -->
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>为文章增加分享功能, 我们可以找些插件来添加到博客里面, 我就选择了<a href="http://www.jiathis.com/">JiaThis</a>, 大家也可以选择其他认为好的。   <br/>
+1.在_config.yml中添加如下配置:</p>
+
+<pre><code>\#JiaThis
+jiathis: true
+</code></pre>
+
+<p>2.在source/_include/post/sharing.html添加从JiaThis获取的分享代码即可, 注意一定加在&lt;/div>之前, jiathis的分享代码根据你在jiathis的配置不同而不同。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -350,12 +394,16 @@ pArray-&gt;insertObject(pHandler, u);
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/cocos2d-x/'>Cocos2d-x (1)</a></li>
-<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (2)</a></li>
 
   </ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/07/wei-octopresstian-jia-jiathis/">为octopress添加JiaThis</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/09/03/wei-octopresstian-jia-ping-lun-he-fen-lei/">为octopress添加评论和分类</a>

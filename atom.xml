@@ -4,7 +4,7 @@
   <title><![CDATA[iTeaCoder]]></title>
   <link href="http://wudb.github.io/atom.xml" rel="self"/>
   <link href="http://wudb.github.io/"/>
-  <updated>2013-09-07T14:30:02+08:00</updated>
+  <updated>2013-09-07T14:50:24+08:00</updated>
   <id>http://wudb.github.io/</id>
   <author>
     <name><![CDATA[啸寒]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[为octopress添加JiaThis]]></title>
+    <link href="http://wudb.github.io/blog/2013/09/07/wei-octopresstian-jia-jiathis/"/>
+    <updated>2013-09-07T14:39:00+08:00</updated>
+    <id>http://wudb.github.io/blog/2013/09/07/wei-octopresstian-jia-jiathis</id>
+    <content type="html"><![CDATA[<p>为文章增加分享功能, 我们可以找些插件来添加到博客里面, 我就选择了<a href="http://www.jiathis.com/">JiaThis</a>, 大家也可以选择其他认为好的。   <br/>
+1.在_config.yml中添加如下配置:</p>
+
+<pre><code>\#JiaThis
+jiathis: true
+</code></pre>
+
+<p>2.在source/_include/post/sharing.html添加从JiaThis获取的分享代码即可, 注意一定加在&lt;/div>之前, jiathis的分享代码根据你在jiathis的配置不同而不同。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[为octopress添加评论和分类]]></title>
