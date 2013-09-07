@@ -74,7 +74,10 @@ github_skip_forks: true
 #twitter_tweet_button: false
 
 #sina
-sina_weibo_button: true
+sina_weibo_button: false
+
+#JiaThis
+jiathis: true
 
 # Google +1
 google_plus_one: false
